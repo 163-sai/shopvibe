@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.logo img {
+  max-width: 100px; /* Adjust the max-width as needed */
+}
+
+.categories a,
+.profile a,
+.auth a {
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .logo a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo a {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,20 @@
+:root {
+    --font-size-small: 14px; /* Define the small font size */
+  }
+  
+  /* Apply the small font size using the CSS variables */
+  .footer-container {
+    font-size: var(--font-size-small);
+  }
+  
+  .footer-heading {
+    font-size: var(--font-size-medium);
+    color:  #247BA0;
+  }
+  
+  .footer-link {
+    font-size: var(--font-size-small);
+  }
+  
+  
+  

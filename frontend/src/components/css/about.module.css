@@ -1,0 +1,51 @@
+/* AboutUs.css */
+
+.aboutuscontainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  .aboutuscontainer >h1{
+    text-align: center;
+  }
+  .logocontainer {
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+  }
+  
+  .logoimage {
+    margin: 20px;
+    width: 20%; /* Adjust the width as needed */
+    height: 10%;
+    height: auto;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* Add a border after each section */
+    padding-bottom: 20px; /* Add padding to separate the border from the text */
+  }
+  
+  .footer {
+    margin-top: 40px;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 600px) {
+    .about-us-container {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    h2 {
+      font-size: 1.2em;
+    }
+  
+    p {
+      font-size: 0.9em;
+    }
+  }
+  

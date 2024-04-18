@@ -1,0 +1,83 @@
+.contactUsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../Images/contactus.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.quoteContainer {
+    width: 40%; /* Adjust as needed */
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    color: black;
+}
+
+.formContainer {
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    padding: 20px; /* Add padding for spacing inside the box */
+    background-color: rgb(174, 230, 171);
+    width: 80%; /* Adjust as needed */
+    margin: 0 auto; /* Center the form container */
+}
+
+.formContainer > h2 {
+    text-align: center;
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin: 20px;
+}
+
+label {
+    margin: 5px;
+    font-style: italic;
+}
+
+input,
+textarea {
+    padding: 15px;
+    margin: 5px;
+    width: 100%; /* Adjust as needed */
+}
+
+button {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%; /* Adjust as needed */
+    margin-top: 10px; /* Add margin to separate button from other elements */
+}
+
+@media screen and (min-width: 768px) {
+    .formContainer {
+        width: 50%; /* Adjust width for medium screens */
+    }
+
+    button {
+        width: 50%; /* Adjust button width for medium screens */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .formContainer {
+        width: 40%; /* Adjust width for large screens */
+    }
+
+    button {
+        width: 40%; /* Adjust button width for large screens */
+    }
+}
+

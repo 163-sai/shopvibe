@@ -1,0 +1,26 @@
+/* src/components/TermsAndConditions.css */
+
+.termscontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: #333;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .lastupdated {
+    font-style: italic;
+    color: #888;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 600px) {
+    .termscontainer {
+      padding: 10px;
+    }
+  }
+  

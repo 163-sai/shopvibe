@@ -1,0 +1,21 @@
+/* custom-date-range-theme.css */
+
+/* Example custom styles */
+.DateRangePicker {
+    /* Your custom styles for the DateRangePicker component */
+    background-color: black;
+    color: white;
+  }
+  
+  .DayPicker-Month {
+    /* Custom styles for the month view */
+    /* Example: change the background color of days */
+    background-color: #333;
+  }
+
+  .rdrStaticRange{
+    color: black;
+  }
+  
+  /* Add more custom styles as needed */
+  

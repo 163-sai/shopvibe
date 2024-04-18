@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
+}
+
+.lastline {
+    background-color: grey;
+    list-style-type: none;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    flex-wrap: wrap;
+    width: 100%;
+    z-index: 1000;
+}
+
+.box2 {
+    text-decoration: none;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.box2 > li {
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    display: block;
+    transition: all .3s ease;
+    padding: 15px;
+}
+
+.box2 > li:hover {
+    color: black;
+    padding-left: 6px;
+}
+
+.firstline {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(174, 230, 171);
+    padding: 30px;
+    justify-content: center;
+    bottom: 10px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.box3 > li {
+    text-decoration: none;
+    color: black;
+    display: block;
+    transition: all .2s ease;
+    padding: 15px;
+}
+
+.box3 > li:hover {
+    color: black;
+    padding-left: 6px;
+}
+
+.social {
+    color: black;
+    margin: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.log:hover {
+    color: green;
+}
+
+.log {
+    font-size: 20px;
+    padding: 5%;
+}
+
+.box2 > h3 {
+    color: rgb(0, 0, 0);
+}
+
+.box3 > h3 {
+    color: rgb(0, 0, 0);
+}
+
+.icon > h3 {
+    color: rgb(0, 0, 0);
+}
+
+.lists {
+    text-decoration: none;
+}
+
+.box1 {
+    display: flex;
+}
+
+.lastline {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: black;
+}
+
+.lii {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.lii:hover {
+    color: grey;
+}
+
+@media screen and (max-width: 768px) {
+    .box2 {
+        justify-content: space-between;
+    }
+
+    .lastline {
+        padding: 5px;
+    }
+
+    .social {
+        margin: 5%;
+    }
+}
