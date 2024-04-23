@@ -41,13 +41,13 @@ function Profile() {
 
   return (
     <>
-      <Container style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' ,textAlign:'center'}}>
+      <Container style={{  display: 'flex', flexDirection: 'column' ,textAlign:'center'}}>
         <h1>Profile</h1>
         {user ? (
           <div >
             <p>Name: {user.name}</p>
             <p>Email: {user.email}</p>
-
+            
 
             <Button onClick={handleLogout} variant='primary'>Logout</Button>
           </div>

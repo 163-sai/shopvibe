@@ -18,7 +18,8 @@ function CheckoutPage() {
   
   const [formData, setFormData] = useState({
     name: '',
-    address: '',
+    Address: '',
+    contactNumber:'',
     paymentMethod: 'Credit Card',
     email: '',
   });
@@ -33,7 +34,10 @@ function CheckoutPage() {
       if (response.data && response.data.email) {
         setFormData((prevData) => ({
           ...prevData,
+          name: response.data.name,
           email: response.data.email,
+          contactNumber: response.data.contactNumber,
+          Address: response.data.Address
         }));
       } else {
         console.error('Failed to fetch user email');
@@ -71,7 +75,7 @@ function CheckoutPage() {
   
 
   const handlePlaceOrderFinal = async () => {
-    if (!formData.name || !formData.address || !formData.paymentMethod || !formData.email) {
+    if (!formData.name || !formData.Address || !formData.contactNumber || !formData.paymentMethod || !formData.email) {
   
       alert('Please enter name, address, payment method,and email.');
       return;
@@ -85,7 +89,8 @@ function CheckoutPage() {
         },
         body: JSON.stringify({
           name: formData.name,
-          address: formData.address,
+          Address: formData.Address,
+          contactNumber: formData.contactNumber,
           paymentMethod: formData.paymentMethod,
           products: productNames,
           total: totalAmount,
@@ -192,7 +197,11 @@ function CheckoutPage() {
                   </Form.Group>
                   <Form.Group controlId="formAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" name="address" value={formData.address} onChange={handleInputChange} placeholder="Enter your address" />
+                    <Form.Control type="text" name="address" value={formData.Address} onChange={handleInputChange} placeholder="Enter your address" />
+                  </Form.Group>
+                  <Form.Group controlId="formcontactNumber">
+                    <Form.Label>contactNumber</Form.Label>
+                    <Form.Control type="text" name="address" value={formData.contactNumber} onChange={handleInputChange} placeholder="Enter your Mobile Number" />
                   </Form.Group>
                   <Form.Group controlId="formPayment">
                     <Form.Label>Payment Method</Form.Label>

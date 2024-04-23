@@ -49,6 +49,7 @@ function NavBar({ cartItemCount }) {
       <Popover.Header style={{ backgroundColor: 'black', color:'white' }}>{userData?.name}</Popover.Header>
       <Popover.Body>
         <p style={{ backgroundColor: 'white' }}>{userData?.email}</p>
+        <Link to='/profilepage'><p>View Full Profile</p></Link>
         <Link to='/myorders'><Button style={{width:'fit-content'}} className='bg-dark'>My Orders</Button></Link>
         {userData ? (
           <Button variant="primary" onClick={handleLogout} style={{ width: 'fit-content', justifyItems: 'center', marginLeft:'10px' }} className='bg-dark'><FontAwesomeIcon icon={faRightFromBracket} /></Button>

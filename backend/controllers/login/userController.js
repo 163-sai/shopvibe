@@ -62,10 +62,10 @@ exports.loginUser = async (req, res) => {
                     return res.status(500).json({ error: "Error comparing passwords" });
                 }
                 if (response) {
-                    const { name, email } = data[0]; 
-                    const token = jwt.sign({ name, email }, "jwt-secret-key", { expiresIn: '1d' });
+                    const { name, email, contactNumber, Address } = data[0]; 
+                    const token = jwt.sign({ name, email, contactNumber, Address }, "jwt-secret-key", { expiresIn: '1d' });
                     res.cookie('token', token);
-                    return res.json({ status: "Success", name, email, token });
+                    return res.json({ status: "Success", name, email, contactNumber, Address, token });
                 } else {
                     return res.status(401).json({ error: "Wrong password" });
                 }
@@ -96,9 +96,9 @@ exports.getUserProfile = async (req, res) => {
     if (err) {
       return res.status(401).json({ error: "Unauthorized" });
     }
-    const { name, email } = decoded;
+    const { name, email, contactNumber, Address  } = decoded;
 
-    res.json({ name, email });
+    res.json({ name, email, contactNumber, Address });
   });
 };
 

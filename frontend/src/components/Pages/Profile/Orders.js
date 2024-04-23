@@ -29,7 +29,7 @@ function Orders() {
     };
 
     return (
-        <Container style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+        <Container style={{ display: 'flex', flexDirection: 'column', textAlign: 'center',padding:'100px 0px' }}>
             {loggedIn ? (
                 <div>
                     <h2>My Orders</h2>
@@ -56,7 +56,7 @@ function Orders() {
                     </Row>
                 </div>
             ) : (
-                <div style={{marginTop:'400px'}}>
+                <div style={{padding:'100px 0px 500px 0px'}}>
                     <h2>Please Login to View Orders</h2>
                     <Link to="/login">
                         <Button>Login</Button>

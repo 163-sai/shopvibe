@@ -43,6 +43,7 @@ import Orders from "./components/Pages/Profile/Orders";
 import OfferProducts from "./components/Pages/Nav/OfferProducts";
 import ScrollToTop from "./components/Pages/Nav/ScrollToTop";
 import TrackOrders from "./components/Pages/Footer/TrackOrders";
+import ProfilePage from "./components/Pages/Profile/ProfilePage";
 
 
 
@@ -75,6 +76,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login setUser={setUser} fetchUserData={fetchUserData}/>} />
         <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/profilepage" element={<ProfilePage />} />
         <Route path="/myorders" exact element ={<Orders/>}/>
         <Route path="/category" exact element ={<Categories/>}/>
         <Route path="/electronics" exact element ={<Electronics/>}/>

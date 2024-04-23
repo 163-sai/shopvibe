@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button,Alert } from 'react-bootstrap';
 import OverallStarRating from '../../Rating/OverallStarRating';
 import { addToCart } from '../../../Cart/cartFunctions';
+import { IconShoppingCart } from '@tabler/icons-react';
 
 function LaptopProducts() {
   const [products, setProducts] = useState([]);
@@ -71,7 +72,8 @@ function LaptopProducts() {
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                 <Card.Footer>
                   <Link to='/cartpage'>
-                    <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} style={{width:'fit-content'}}>Add to Cart</Button>
+                    <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} style={{width:'fit-content'}}>
+                    <IconShoppingCart stroke={3} />Add to Cart</Button>
                   </Link>
                 </Card.Footer>
                 </div>
