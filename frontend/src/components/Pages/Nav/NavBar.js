@@ -5,6 +5,7 @@ import axios from 'axios';
 import logo from '../../Images/SVS.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightFromBracket, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Badge } from 'primereact/badge';
 
 
 
@@ -49,7 +50,7 @@ function NavBar({ cartItemCount }) {
       <Popover.Header style={{ backgroundColor: 'black', color:'white' }}>{userData?.name}</Popover.Header>
       <Popover.Body>
         <p style={{ backgroundColor: 'white' }}>{userData?.email}</p>
-        <Link to='/profilepage'><p>View Full Profile</p></Link>
+        <Link to='/profilepage' style={{display:'flex',justifyContent:'center',alignItems:'center',textDecoration:'none'}}><p>View Profile</p></Link>
         <Link to='/myorders'><Button style={{width:'fit-content'}} className='bg-dark'>My Orders</Button></Link>
         {userData ? (
           <Button variant="primary" onClick={handleLogout} style={{ width: 'fit-content', justifyItems: 'center', marginLeft:'10px' }} className='bg-dark'><FontAwesomeIcon icon={faRightFromBracket} /></Button>
@@ -117,7 +118,7 @@ function NavBar({ cartItemCount }) {
             onMouseEnter={() => setHoveredLink('cart')}
             onMouseLeave={() => setHoveredLink(null)}
           >
-            <FontAwesomeIcon icon={faCartShopping} />Cart({ cartItemCount })</NavLink>
+            <FontAwesomeIcon icon={faCartShopping} />Cart({ cartItemCount })<Badge value={cartItemCount} /></NavLink>
             </OverlayTrigger>
 
 
@@ -153,20 +154,6 @@ function NavBar({ cartItemCount }) {
       </Container>
     </Navbar>
 
-    {/* <Navbar expand="lg" className="bg-light text-dark second-navbar">
-        <Container fluid>
-          <Nav className="me-auto test" style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', gap:'20px', width:'100%'}}>
-            
-                <NavLink to='/mobileproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Mobile</NavLink><span className='seperator'>|</span>
-                <NavLink to='/laptopproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Laptop</NavLink><span className='seperator'>|</span>
-                <NavLink to='/smartwatchproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Smartwatch</NavLink><span className='seperator'>|</span>
-                <NavLink to='/menfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Men</NavLink><span className='seperator'>|</span>
-                <NavLink to='/womenfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Women</NavLink><span className='seperator'>|</span>
-                <NavLink to='/kidfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Kid</NavLink>
-             
-          </Nav>
-        </Container>
-      </Navbar> */}
     </>
   );
 }

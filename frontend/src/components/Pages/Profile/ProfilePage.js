@@ -1,8 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { SpeedDial } from 'primereact/speeddial';
+import { Toast } from 'primereact/toast';
 
 function ProfilePage() {
+  const toast = useRef(null);
+
+  const items = [
+    {
+      label: 'Update',
+      icon: 'pi pi-refresh',
+      command: () => {
+          toast.current.show({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
+      }
+  },
+  {
+      label: 'Delete',
+      icon: 'pi pi-trash',
+      command: () => {
+          toast.current.show({ severity: 'error', summary: 'Delete', detail: 'Data Deleted' });
+      }
+  },
+  ]
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -124,6 +144,10 @@ function ProfilePage() {
       ) : (
         <Button variant="outline-primary" onClick={handleEdit} style={{width:'fit-content', margin:'0px 10px'}}>Edit</Button>
       )}
+      </div>
+      <div style={{ position: 'relative', height: '500px' }}>
+                <Toast ref={toast} />
+                <SpeedDial model={items} direction="right" style={{ top: 'calc(50% - 2rem)', left: 0 }} />
       </div>
     </Container>
   );

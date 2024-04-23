@@ -45,7 +45,7 @@ function Orders() {
                                             <p>Payment Method: {order.paymentMethod}</p>
                                             <p>Products: {order.products}</p>
                                             <p>Total: ₹{order.total}</p>
-                                            <Link to={`/trackorders/${order.id}`}>
+                                            <Link to={`/trackorders`}>
                                                 <Button variant="primary">Track Order</Button>
                                             </Link>
                                         </Card.Text>

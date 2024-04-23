@@ -6,8 +6,7 @@ import OverallStarRating from '../../Rating/OverallStarRating';
 import { addToCart } from '../../../Cart/cartFunctions';
 import { IconShoppingCart } from '@tabler/icons-react';
 import Membership from '../../../Nav/Membership';
-import Viewer from 'react-360-view';
-
+// import React360View from 'react-360-view';
 
 
 
@@ -152,16 +151,7 @@ const [reviewFormData, setReviewFormData] = useState({
           </Card>
           </div>
         </Col>
-        {/* <Col xs={12} md={6} style={{ marginBottom: '20px' }}>
-  <Viewer
-    imagePath={`data:image/png;base64,${product.image}`}
-    width="100%"
-    height="500px"
-    autoplay
-    loop
-  /> 
-</Col>*/}
-
+        {/* <React360View images={[`data:image/png;base64,${product.image}`]} /> */}
         <Col xs={12} md={6} style={{ marginBottom: '20px' }}>
         <Card style={{ border: 'none', borderBottom: '2px solid lightgray' }}>
             <Card.Body>
@@ -308,18 +298,3 @@ const [reviewFormData, setReviewFormData] = useState({
 
 export default ProductDetails;
 
-    {/*<Row>
-        <Col>
-          <Card>
-            <Card.Body>
-              <Card.Title>Additional Images</Card.Title>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                {product.additionalImages.map((image, index) => (
-                  <img key={index} src={`data:image/png;base64,${image}`} alt={`Product Image ${index}`} style={{ width: '100px', height: '100px', margin: '5px' }} />
-                ))}
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>*/}
- 

@@ -5,7 +5,7 @@ import { IconTrash, IconPlus, IconMinus } from '@tabler/icons-react';
 import ship from '../../Images/shipping.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBackward } from '@fortawesome/free-solid-svg-icons';
-
+import { Badge } from 'primereact/badge';
         
 
 function CartPage() {
@@ -49,7 +49,7 @@ function CartPage() {
   return (
     <div style={{  display: 'flex', flexDirection: 'column', marginTop:'50px' }}>
       <Container>
-        <h1>Shopping Cart  ({cartItemCount} Items)</h1>
+        <h1>Shopping Cart  ({cartItemCount} Items) <Badge value={ cartItemCount } /></h1>
         <Table striped bordered hover style={{border:'none', borderBottom:'2px solid blue' }}  responsive>
           <thead>
             <tr>
