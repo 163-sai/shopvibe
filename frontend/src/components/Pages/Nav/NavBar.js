@@ -1,12 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, NavDropdown, Popover, OverlayTrigger, CardTitle, Button,Tooltip } from 'react-bootstrap';
+import { Navbar, Nav, Container, Popover, OverlayTrigger, Button,Tooltip } from 'react-bootstrap';
 import axios from 'axios';
 import logo from '../../Images/SVS.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightFromBracket, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Badge } from 'primereact/badge';
-
+import { Toast } from 'primereact/toast';
 
 
 function NavBar({ cartItemCount }) {
@@ -14,6 +13,9 @@ function NavBar({ cartItemCount }) {
   const [hoveredLink, setHoveredLink] = useState(null);
   const navigate = useNavigate();
 
+
+  const [toastMessage, setToastMessage] = useState('');
+  const toast = useRef(null);
 
 
 
@@ -27,12 +29,21 @@ function NavBar({ cartItemCount }) {
       console.error('Error fetching user data:', error);
     }
   };
+
+  const handleLogin = () => {
+    // Perform login logic
+    // If login is successful, set the toast message
+    setToastMessage('Login successful');
+    toast.current.show({ severity: 'success', summary: 'Login', detail: 'Logged in successfully' });
+  };
   
   const handleLogout = async () => {
     try {
       await axios.post('http://localhost:5001/logout');
       setUserData(null);
       navigate('/login');
+      setToastMessage('Logout successful');
+      toast.current.show({ severity: 'success', summary: 'Logout', detail: 'Logged out successfully' });
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -118,14 +129,15 @@ function NavBar({ cartItemCount }) {
             onMouseEnter={() => setHoveredLink('cart')}
             onMouseLeave={() => setHoveredLink(null)}
           >
-            <FontAwesomeIcon icon={faCartShopping} />Cart({ cartItemCount })<Badge value={cartItemCount} /></NavLink>
+            <FontAwesomeIcon icon={faCartShopping} />Cart({ cartItemCount })</NavLink>
             </OverlayTrigger>
 
 
 {/* login/logout */}
+<Toast ref={toast} />
             {userData ? (
                   <OverlayTrigger placement="bottom" overlay={renderTooltip('Logout')}>
-                    {/* <Nav.Link> */}
+                   
                       <NavLink to='/' onClick={handleLogout} style={{ padding:'0 10px',  color: 'black', textDecoration: 'none', fontSize: '20px',
                         borderBottom: hoveredLink === 'logout' ? '2px solid #333' : 'none',
                       }}
@@ -133,19 +145,19 @@ function NavBar({ cartItemCount }) {
                       onMouseLeave={() => setHoveredLink(null)}
                       ><FontAwesomeIcon icon={faRightFromBracket} />
                       </NavLink>
-                    {/* </Nav.Link> */}
+                 
                   </OverlayTrigger>
             ) : (
               <OverlayTrigger placement="bottom" overlay={renderTooltip('Login')}>
-              {/* <Nav.Link> */}
-                <NavLink to='/login' style={{ padding:'0 10px',  color: 'black', textDecoration: 'none', fontSize: '20px' ,
+              
+                <NavLink to='/login'style={{ padding:'0 10px',  color: 'black', textDecoration: 'none', fontSize: '20px' ,
                   borderBottom: hoveredLink === 'login' ? '2px solid #333' : 'none',
                 }}
                 onMouseEnter={() => setHoveredLink('login')}
                 onMouseLeave={() => setHoveredLink(null)}
                 ><FontAwesomeIcon icon={faRightToBracket} />
                 </NavLink>
-              {/* </Nav.Link> */}
+             
             </OverlayTrigger>            
             )}
             </div>

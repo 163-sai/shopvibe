@@ -103,6 +103,49 @@ exports.getUserProfile = async (req, res) => {
 };
 
 
+exports.updateUserProfile = async (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const { name, email, contactNumber, Address } = req.body;
+    decoded.name = name;
+    decoded.email = email;
+    decoded.contactNumber = contactNumber;
+    decoded.Address = Address;
+
+    const userId = decoded.id;
+    db.query(
+      'UPDATE login SET name=?, email=?, contactNumber=?, Address=? WHERE id=?',
+      [name, email, contactNumber, Address, userId],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        let updatedToken;
+        if (decoded.exp) {
+          updatedToken = jwt.sign(decoded, "jwt-secret-key");
+        } else {
+          updatedToken = jwt.sign(decoded, "jwt-secret-key", { expiresIn: "1h" });
+        }
+
+        res.cookie("token", updatedToken, { httpOnly: true }).json({ message: "Profile updated successfully" });
+      }
+    );
+  });
+};
+
+
+
 //Tracking Order
 
 exports.trackorder =async (req,res) => {

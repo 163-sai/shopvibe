@@ -13,6 +13,7 @@ router.post('/logout', userController.logoutUser);
 
 // Profile endpoint
 router.get('/profile', userController.getUserProfile);
+router.post('/updateprofile', userController.updateUserProfile);
 
 //Track Order
 router.get('/api/orders/:orderId', userController.trackorder);

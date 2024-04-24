@@ -12,7 +12,7 @@ function ProfilePage() {
       label: 'Update',
       icon: 'pi pi-refresh',
       command: () => {
-          toast.current.show({ severity: 'success', summary: 'Update', detail: 'Data Updated' });
+          toast.current.show({ severity: 'success', summary: 'Update', detail: 'Profile Updated' });
       }
   },
   {
@@ -53,9 +53,20 @@ function ProfilePage() {
   };
 
   const handleSave = () => {
-    // Handle saving data to backend or perform validation if needed
-    setEditMode(false);
+    console.log('Saving data:', formData); // Add this line
+    // Send updated data to backend
+    axios.post('http://localhost:5001/updateprofile', formData)
+      .then(res => {
+        console.log('Save successful:', res.data); // Add this line
+        toast.current.show({ severity: 'success', summary: 'Update', detail: 'Profile Updated' });
+        setEditMode(false);
+      })
+      .catch(err => {
+        console.error(err);
+        // Handle error state here
+      });
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,7 +87,7 @@ function ProfilePage() {
             <Form.Control
               type="email"
               name="email"
-              value={formData.email}
+              value={formData.email || ''}
               readOnly={!editMode}
               onChange={handleChange}
             />

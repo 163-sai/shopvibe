@@ -22,6 +22,7 @@ function ProductDetails() {
     PARTY: '',
   });
 
+
   const [reviews, setReviews] = useState([]);
 const [reviewFormData, setReviewFormData] = useState({
   rating: 0,
@@ -151,7 +152,7 @@ const [reviewFormData, setReviewFormData] = useState({
           </Card>
           </div>
         </Col>
-        {/* <React360View images={[`data:image/png;base64,${product.image}`]} /> */}
+        { /*<React360View images={[`data:image/png;base64,${product.image}`]} />*/}
         <Col xs={12} md={6} style={{ marginBottom: '20px' }}>
         <Card style={{ border: 'none', borderBottom: '2px solid lightgray' }}>
             <Card.Body>
@@ -274,12 +275,14 @@ const [reviewFormData, setReviewFormData] = useState({
                             </Form.Label>
                             <Form.Label>your review*</Form.Label>
                             <textarea required />
-                            <Form.Label>Name*</Form.Label>
-                            <Col><input type='text' required/></Col>
-                            <Form.Label>Email*</Form.Label>
-                            <Col><input type='email' required/></Col>
-                            <Button type='submit' style={{marginTop:'20px', marginLeft:'150px', width:'fit-content'}}>Submit</Button>
-                          </Form>
+                            <Form.Label>Your review*</Form.Label>
+                                <textarea name="text" value={reviewFormData.text} onChange={handleInputChange} required />
+                                <Form.Label>Name*</Form.Label>
+                                <Col><input type='text' name="name" value={reviewFormData.name} onChange={handleInputChange} required /></Col>
+                                <Form.Label>Email*</Form.Label>
+                                <Col><input type='email' name="email" value={reviewFormData.email} onChange={handleInputChange} required /></Col>
+                                <Button type='submit' style={{ marginTop: '20px', marginLeft: '150px', width: 'fit-content' }}>Submit</Button>
+                              </Form>
                         </Card.Body>
                       </Card>
                       </Card.Body>
