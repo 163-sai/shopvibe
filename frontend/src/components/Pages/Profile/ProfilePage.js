@@ -29,8 +29,8 @@ function ProfilePage() {
     email: '',
     gender: '',
     dob: '',
-    mobile: '',
-    address: '',
+    contactNumber: '',
+    Address: '',
   });
 
   useEffect(() => {
@@ -40,11 +40,11 @@ function ProfilePage() {
   const fetchUserData = () => {
     axios.get('http://localhost:5001/profile')
       .then(res => {
-        setFormData(res.data); // Assuming the API response structure matches the formData state
+        setFormData(res.data); 
       })
       .catch(err => {
         console.error(err);
-        // Handle error state here
+        
       });
   };
 
@@ -53,17 +53,17 @@ function ProfilePage() {
   };
 
   const handleSave = () => {
-    console.log('Saving data:', formData); // Add this line
-    // Send updated data to backend
+    console.log('Saving data:', formData); 
+  
     axios.post('http://localhost:5001/updateprofile', formData)
       .then(res => {
-        console.log('Save successful:', res.data); // Add this line
+        console.log('Save successful:', res.data); 
         toast.current.show({ severity: 'success', summary: 'Update', detail: 'Profile Updated' });
         setEditMode(false);
       })
       .catch(err => {
         console.error(err);
-        // Handle error state here
+        
       });
   };
   
@@ -80,6 +80,10 @@ function ProfilePage() {
     <Container style={{ padding: '30px 0px' }}>
       <div style={{padding:'10px 0px',border:'2px solid lightgrey'}}>
       <h3>Edit Profile</h3>
+<div>
+  <strong>User ID:</strong> {formData.id}
+</div>
+
       <Row>
         <Col xs={6}  style={{borderRight:'2px solid lightgrey'}}>
           <Form.Group controlId="formEmail" style={{padding:'10px 0px',borderBottom:'2px solid lightgrey'}}>
@@ -131,7 +135,7 @@ function ProfilePage() {
             <Form.Label>Mobile Number</Form.Label>
             <Form.Control
               type="text"
-              name="mobile"
+              name="contactNumber"
               value={formData.contactNumber}
               readOnly={!editMode}
               onChange={handleChange}
@@ -142,7 +146,7 @@ function ProfilePage() {
             <Form.Control
               as="textarea"
               rows={3}
-              name="address"
+              name="Address"
               value={formData.Address}
               readOnly={!editMode}
               onChange={handleChange}

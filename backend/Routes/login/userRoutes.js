@@ -15,8 +15,7 @@ router.post('/logout', userController.logoutUser);
 router.get('/profile', userController.getUserProfile);
 router.post('/updateprofile', userController.updateUserProfile);
 
-//Track Order
-router.get('/api/orders/:orderId', userController.trackorder);
+
 
 module.exports = router;
 

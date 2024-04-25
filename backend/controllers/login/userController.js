@@ -62,10 +62,10 @@ exports.loginUser = async (req, res) => {
                     return res.status(500).json({ error: "Error comparing passwords" });
                 }
                 if (response) {
-                    const { name, email, contactNumber, Address } = data[0]; 
-                    const token = jwt.sign({ name, email, contactNumber, Address }, "jwt-secret-key", { expiresIn: '1d' });
+                    const { id,name, email, contactNumber, Address } = data[0]; 
+                    const token = jwt.sign({ id,name, email, contactNumber, Address }, "jwt-secret-key", { expiresIn: '1d' });
                     res.cookie('token', token);
-                    return res.json({ status: "Success", name, email, contactNumber, Address, token });
+                    return res.json({ status: "Success", id,name, email, contactNumber, Address, token });
                 } else {
                     return res.status(401).json({ error: "Wrong password" });
                 }
@@ -96,9 +96,9 @@ exports.getUserProfile = async (req, res) => {
     if (err) {
       return res.status(401).json({ error: "Unauthorized" });
     }
-    const { name, email, contactNumber, Address  } = decoded;
+    const { id,name, email, contactNumber, Address  } = decoded;
 
-    res.json({ name, email, contactNumber, Address });
+    res.json({ id,name, email, contactNumber, Address });
   });
 };
 
@@ -122,6 +122,7 @@ exports.updateUserProfile = async (req, res) => {
     decoded.Address = Address;
 
     const userId = decoded.id;
+    console.log("userId",userId);
     db.query(
       'UPDATE login SET name=?, email=?, contactNumber=?, Address=? WHERE id=?',
       [name, email, contactNumber, Address, userId],
@@ -146,25 +147,5 @@ exports.updateUserProfile = async (req, res) => {
 
 
 
-//Tracking Order
 
-exports.trackorder =async (req,res) => {
-    const { Id } = req.params;
-
-  db.query(
-    'SELECT * FROM orders WHERE Id = ?',
-    [Id],
-    (error, results) => {
-      if (error) {
-        console.error('Error fetching order:', error);
-        res.status(500).json({ error: 'An error occurred while fetching the order' });
-      } else if (results.length === 0) {
-        res.status(404).json({ error: 'Order not found' });
-      } else {
-        const order = results[0];
-        res.status(200).json(order);
-      }
-    }
-  );
-}
 module.exports = exports;
