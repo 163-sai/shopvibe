@@ -112,6 +112,7 @@ function CheckoutPage() {
       setShowModal(true);
       setShowSuccessModal(false);
       console.log('CreditCard payment successful!');
+      setShowCreditCardModal(false);
     } catch (error) {
       console.error('Error processing CreditCard payment:', error);
       alert('Error processing payment. Please try again later.');
@@ -124,6 +125,7 @@ function CheckoutPage() {
       setShowModal(true);
       setShowSuccessModal(false);
       console.log('DebitCard payment successful!');
+      setShowDebitCardModal(false);
     } catch (error) {
       console.error('Error processing DebitCard payment:', error);
       alert('Error processing payment. Please try again later.');
@@ -136,6 +138,7 @@ function CheckoutPage() {
       setShowModal(true);
       setShowSuccessModal(false);
       console.log('Net banking payment successful!');
+      setShowNetBankingModal(false);
     } catch (error) {
       console.error('Error processing net banking payment:', error);
       alert('Error processing payment. Please try again later.');
@@ -148,6 +151,7 @@ function CheckoutPage() {
       setShowModal(true);
       setShowSuccessModal(false);
       console.log('UPI payment successful!');
+      setShowUpiModal(false);
     } catch (error) {
       console.error('Error processing UPI payment:', error);
       alert('Error processing payment. Please try again later.');
@@ -197,11 +201,11 @@ function CheckoutPage() {
                   </Form.Group>
                   <Form.Group controlId="formAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" name="address" value={formData.Address} onChange={handleInputChange} placeholder="Enter your address" />
+                    <Form.Control type="text" name="Address" value={formData.Address} onChange={handleInputChange} placeholder="Enter your address" />
                   </Form.Group>
                   <Form.Group controlId="formcontactNumber">
                     <Form.Label>contactNumber</Form.Label>
-                    <Form.Control type="text" name="address" value={formData.contactNumber} onChange={handleInputChange} placeholder="Enter your Mobile Number" />
+                    <Form.Control type="text" name="contactNumber" value={formData.contactNumber} onChange={handleInputChange} placeholder="Enter your Mobile Number" />
                   </Form.Group>
                   <Form.Group controlId="formPayment">
                     <Form.Label>Payment Method</Form.Label>
@@ -218,9 +222,11 @@ function CheckoutPage() {
                     <Form.Control type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter your address" />
                   </Form.Group>
                   {' '}
-                  <Button variant="primary" onClick={handlePlaceOrder} className="mb-2">
+                  <div style={{display:'flex', justifyContent:'center', alignItems:'center', padding:'20px 0px'}}>
+                  <Button  variant="primary" onClick={handlePlaceOrder} className="mb-2">
                     Place Order
                   </Button>
+                  </div>
                 </Form>
               </Card.Body>
             </Card>
@@ -248,7 +254,7 @@ function CheckoutPage() {
         <Modal.Body>
           <p>Name: {formData.name}</p>
           <p>Email: {formData.email}</p>
-          <p>Address: {formData.address}</p>
+          <p>Address: {formData.Address}</p>
           <p>Payment Method: {formData.paymentMethod}</p>
           <p>Products: {productNames}</p>
           <p>Total: ₹{totalAmount}</p>

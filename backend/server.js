@@ -49,15 +49,15 @@ app.use(searchRoutes);
 
 
 app.post('/api/orders', (req, res) => {
-  const { name, address, paymentMethod, products, total, email } = req.body;
+  const { name, Address,contactNumber, paymentMethod, products, total, email } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required for placing the order' });
   }
 
   db.query(
-    'INSERT INTO orders (name, address, paymentMethod, products, total, email) VALUES (?, ?, ?, ?, ?, ?)',
-    [name, address, paymentMethod, products, total, email],
+    'INSERT INTO orders (name, Address,contactNumber, paymentMethod, products, total, email) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [name, Address,contactNumber, paymentMethod, products, total, email],
     (error, results) => {
       if (error) {
         console.error('Error inserting order:', error);

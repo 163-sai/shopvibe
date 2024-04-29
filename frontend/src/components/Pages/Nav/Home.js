@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Carousel, Col, Container, Row, Button, Image, Figure, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ban from '../../Images/homebanner.webp';
 import ban4 from '../../Images/hb4.webp';
 import ban7 from '../../Images/smartwatch.jpg';
@@ -16,6 +16,8 @@ import axios from 'axios';
 import { addToCart } from '../Cart/cartFunctions';
 import OverallStarRating from '../Category/Rating/OverallStarRating';
 import { IconShoppingCart } from '@tabler/icons-react';
+import ChatBot from 'react-simple-chatbot';
+// import { ThemeProvider } from 'styled-components';
 
 
 
@@ -23,6 +25,40 @@ const Home = () => {
   const [topSellingProducts, setTopSellingProducts] = useState([]);
   const color = 'gold';
   const [addedToCartMessage, setAddedToCartMessage] = useState('');
+  const navigate = useNavigate();
+
+ const steps=[
+    {
+      id: '1',
+      message: 'What is your name?',
+      trigger: '2',
+    },
+    {
+      id: '2',
+      user: true,
+      trigger: '3',
+    },
+    {
+      id: '3',
+      message: 'Hi {previousValue}, nice to meet you!',
+      trigger: '4',
+    },
+    {
+      id: '4',
+      options: [
+        { value: 1, label: 'electronics', handler: () => navigate('/electrnics'),},
+        { value: 2, label: 'fashion', handler: () => navigate('/fashion'),},
+
+    ],
+      end: true,
+    },
+  ]
+
+
+
+const config = {
+  floating: true,
+};
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/top-selling-products')
@@ -222,6 +258,15 @@ const Home = () => {
     <Link to='/membership'>
       <Figure.Image className='p-4 bg-light rounded' alt='laptop' src={membership} fluid  style={{justifyContent:'center'}} />
     </Link>
+    </Container>
+    <Container>
+                <ChatBot
+                    headerTitle="ShopVibeBot"
+                    steps={steps}
+                    {...config}
+ 
+                />
+          
     </Container>
     </div>
   </>

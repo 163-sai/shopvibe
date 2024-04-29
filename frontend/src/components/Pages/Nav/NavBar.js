@@ -31,8 +31,6 @@ function NavBar({ cartItemCount }) {
   };
 
   const handleLogin = () => {
-    // Perform login logic
-    // If login is successful, set the toast message
     setToastMessage('Login successful');
     toast.current.show({ severity: 'success', summary: 'Login', detail: 'Logged in successfully' });
   };
@@ -93,10 +91,10 @@ function NavBar({ cartItemCount }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{width:'100%'}}>
 {/* category */}
-          <Nav className="me-auto " style={{width:'100%', alignItems: 'center', display: 'flex', flexWrap: 'wrap',justifyContent:'center', alignItems:'center', gap:'20px', marginRight:'auto',marginLeft:'auto'}}>
+          <Nav className="me-auto " style={{width:'100%', display: 'flex', flexWrap: 'wrap',justifyContent:'center', alignItems:'center', gap:'20px', marginRight:'auto',marginLeft:'auto'}}>
             <div style={{display:'flex', flexDirection:'row', flexGrow:'1'}} className='test'> 
                 <NavLink to='/mobileproducts' className="nav-link" activeClassName="active"  style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black'}}>Mobile</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
-                <NavLink to='/laptopproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Laptop</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
+                <NavLink to='/laptopproducts' className="nav-link" activeClassName="active" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Laptop</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
                 <NavLink to='/smartwatchproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Smartwatch</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
                 <NavLink to='/menfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Men</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
                 <NavLink to='/womenfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black' }}>Women</NavLink><span className='seperator' style={{display:'flex', alignItems:'center'}}>|</span>
