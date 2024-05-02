@@ -46,7 +46,7 @@ const Home = () => {
     {
       id: '4',
       options: [
-        { value: 1, label: 'electronics', handler: () => navigate('/electrnics'),},
+        { value: 1, label: 'electronics', handler: () => navigate('/electronics'),},
         { value: 2, label: 'fashion', handler: () => navigate('/fashion'),},
 
     ],

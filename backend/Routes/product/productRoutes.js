@@ -22,7 +22,7 @@ router.get('/api/womenfashion/:productId', productController.getAllWomenFashionB
 router.get('/api/kidfashion', productController.getAllKidFashion);
 router.get('/api/kidfashion/:productId', productController.getAllKidFashionById);
 
-//Top Selling Producta
+//Top Selling Products
 router.get('/api/top-selling-products', productController.getTopSellingProducts);
 router.get('/api/top-selling-products/:productId', productController.getTopSellingProductsById);
 

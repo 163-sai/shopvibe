@@ -108,6 +108,44 @@ app.get('/api/users', (req, res) => {
   );
 });
 
+
+app.put('/api/users/:userId', (req, res) => {
+  const userId = req.params.userId;
+  const { name, email } = req.body;
+
+  db.query(
+    'UPDATE login SET name = ?, email = ? WHERE id = ?',
+    [name, email, userId],
+    (error, results) => {
+      if (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ error: 'An error occurred while updating user' });
+      } else {
+        res.status(200).json({ message: 'User updated successfully' });
+      }
+    }
+  );
+});
+
+
+app.delete('/api/users/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  db.query(
+    'DELETE FROM login WHERE id = ?',
+    [userId],
+    (error, results) => {
+      if (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ error: 'An error occurred while deleting user' });
+      } else {
+        res.status(200).json({ message: 'User deleted successfully' });
+      }
+    }
+  );
+});
+
+
 app.get('/orders',(req,res) =>{
   db.query('SELECT * FROM orders', (error, results) => {
     if (error) {

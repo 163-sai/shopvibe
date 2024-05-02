@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Form, Tab, Nav,Accordion,Modal,Alert } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { Container, Row, Col, Card, Button, Form,Accordion,Modal,Alert } from 'react-bootstrap';
 import StarRating from '../../Rating/StarRating';
 import OverallStarRating from '../../Rating/OverallStarRating';
 import { addToCart } from '../../../Cart/cartFunctions';
@@ -10,7 +10,6 @@ import Membership from '../../../Nav/Membership';
 function MenFashionDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [additionalImages, setAdditionalImages] = useState([]);
   const [error, setError] = useState(null);
   const [selectedSize, setSelectedSize] = useState(''); 
   const [rating, setRating] = useState(0);
@@ -40,21 +39,6 @@ function MenFashionDetails() {
       .catch((error) => {
         setError(error.message);
       });
-
-{   /*   fetch(`http://localhost:5001/api/menfashion/${productId}/images`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch additional images');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setAdditionalImages(data);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });*/}
-
   }, [productId]);
 
   
@@ -114,15 +98,6 @@ function MenFashionDetails() {
     <div className=''style={{display: 'flex', flexDirection: 'column', marginTop:'50px', marginBottom:'100px' }}>
       <Container>
       {showAddedMessage && <Alert variant="success">Added to Cart!</Alert>}
-      <Row>
-          {additionalImages.map((image, index) => (
-            <Col key={index} xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '20px' }}>
-              <Card>
-                <Card.Img src={`data:image/png;base64,${image.image}`} />
-              </Card>
-            </Col>
-          ))}
-        </Row>
         <Row>
           <Col xs={12} md={6}>
             <div style={{ position: 'sticky', top: '50px', zIndex: 1 }}>

@@ -11,6 +11,7 @@ function MenFashion() {
   const color = 'gold';
   const [cart, setCart] = useState([]);
   const [showAddedMessage, setShowAddedMessage] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5001/api/menfashion')
@@ -36,16 +37,16 @@ function MenFashion() {
   }, []);
 
   const handleAddToCart = (productName, productPrice) => {
-    const newProduct = { name: productName, price: productPrice, quantity: 1 };
+    if (!selectedSize) { 
+      console.error('Please select a size.');
+      return;
+    }
+    const newProduct = { name: productName, price: productPrice, quantity: 1, size: selectedSize };
     addToCart([newProduct]);
     setShowAddedMessage(true);
     setTimeout(() => {
       setShowAddedMessage(false);
-    }, 3000); 
-  };
-
-  const calculateTotal = () => {
-    return cart.reduce((total, product) => total + product.price * product.quantity, 0);
+    }, 3000);
   };
 
   return (
@@ -76,8 +77,58 @@ function MenFashion() {
                 </Card.Body>
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                 <Card.Footer>
-                  <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} style={{width:'fit-content'}}>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',justifyContent: 'space-between' }}>
+                <h3 style={{fontWeight:'bold', fontSize:'20px', marginRight: '10px', marginBottom: '0'}}>Select Size</h3>
+                      <Button
+                        variant="outline-secondary"
+                        className={selectedSize === 'S' ? 'active' : ''}
+                        onClick={() => setSelectedSize('S')} 
+                        style={{ width: '40px', height: '40px', borderRadius: '50%', textAlign: 'center', padding: '0', lineHeight: '40px', marginBottom: '10px' }}
+                      >
+                        S
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        className={selectedSize === 'M' ? 'active' : ''}
+                        onClick={() => setSelectedSize('M')} 
+                        style={{ width: '40px', height: '40px', borderRadius: '50%', textAlign: 'center', padding: '0', lineHeight: '40px', marginBottom: '10px' }}
+                      >
+                        M
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        className={selectedSize === 'L' ? 'active' : ''}
+                        onClick={() => setSelectedSize('L')} 
+                        style={{ width: '40px', height: '40px', borderRadius: '50%', textAlign: 'center', padding: '0', lineHeight: '40px', marginBottom: '10px' }}
+                      >
+                        L
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        className={selectedSize === 'XL' ? 'active' : ''}
+                        onClick={() => setSelectedSize('XL')} 
+                        style={{ width: '40px', height: '40px', borderRadius: '50%', textAlign: 'center', padding: '0', lineHeight: '40px', marginBottom: '10px' }}
+                      >
+                        XL
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        className={selectedSize === 'XXL' ? 'active' : ''}
+                        onClick={() => setSelectedSize('XXL')} 
+                        style={{ width: '40px', height: '40px', borderRadius: '50%', textAlign: 'center', padding: '0', lineHeight: '40px', marginBottom: '10px' }}
+                      >
+                        XXL
+                      </Button>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '30px',marginTop:'30px', border:'none', borderBottom:'2px solid lightgrey', padding:'10px' }}>
+                    <Button
+                      variant="primary"
+                      onClick={() => handleAddToCart(product.name, product.price)}
+                      disabled={!selectedSize} 
+                      style={{ width: 'fit-content' }}
+                    >
                   <IconShoppingCart stroke={3} />Add to Cart</Button>
+                  </div>
                 </Card.Footer>
                 </div>
               </Card>
