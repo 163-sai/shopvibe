@@ -6,12 +6,17 @@ import logo from '../../Images/SVS.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightFromBracket, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Toast } from 'primereact/toast';
+// import CartItemCount from '../Cart/CartItemCount';
+import { useCartItemCount } from '../Cart/CartItemCount';
+import { Badge } from 'primereact/badge';
 
 
-function NavBar({ cartItemCount }) {
+
+function NavBar() {
   const [userData, setUserData] = useState(null);
   const [hoveredLink, setHoveredLink] = useState(null);
   const navigate = useNavigate();
+  const cartItemCount = useCartItemCount();
 
 
   const [toastMessage, setToastMessage] = useState('');
@@ -77,7 +82,7 @@ function NavBar({ cartItemCount }) {
     <>
     <Navbar expand="lg" className="bg-light text-dark">
       <Container fluid>
-        <Navbar.Brand style={{marginBottom:'5px',marginRight:'50px'}}>
+        <Navbar.Brand style={{padding:'5px 0'}}>
           <NavLink to='/'>
             <img
               src={logo}
@@ -127,7 +132,7 @@ function NavBar({ cartItemCount }) {
             onMouseEnter={() => setHoveredLink('cart')}
             onMouseLeave={() => setHoveredLink(null)}
           >
-            <FontAwesomeIcon icon={faCartShopping} />Cart({ cartItemCount })</NavLink>
+            <FontAwesomeIcon icon={faCartShopping} />Cart<Badge value={ cartItemCount } /></NavLink>
             </OverlayTrigger>
 
 

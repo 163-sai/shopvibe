@@ -44,6 +44,7 @@ import OfferProducts from "./components/Pages/Nav/OfferProducts";
 import ScrollToTop from "./components/Pages/Nav/ScrollToTop";
 import TrackOrders from "./components/Pages/Footer/TrackOrders";
 import ProfilePage from "./components/Pages/Profile/ProfilePage";
+import { CartItemCountProvider } from './components/Pages/Cart/CartItemCount';
 
 
 
@@ -63,6 +64,7 @@ function App() {
 
   return (
   <>
+  <CartItemCountProvider>
   <PrimeReactProvider>
    <MantineProvider>
     <Router>
@@ -116,6 +118,7 @@ function App() {
     </Router>
     </MantineProvider>
     </PrimeReactProvider>
+    </CartItemCountProvider>
   </>
   );
 }

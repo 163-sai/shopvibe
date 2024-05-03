@@ -24,6 +24,7 @@ function CartPage() {
     newCart.splice(index, 1);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    window.location.href = window.location.href;
   };
 
   const incrementQuantity = (index) => {
