@@ -158,8 +158,8 @@ const config = {
     </Container>
     </div>
     
-    <Container fluid className="offer-container" style={{  display: 'flex', flexDirection: 'column' }}>
-      <Row className="justify-content-center align-items-center bg-light rounded " style={{border:'none',borderTop:'5px solid grey',borderBottom:'5px solid grey'}}>
+    <Container fluid className="offer-container" style={{  display: 'flex', flexDirection: 'column', padding:'20px 0' }}>
+      <Row className="justify-content-center align-items-center bg-light rounded ">
         <Col xs={12} sm={6} md={4} lg={4} className="text-center mb-3 mb-md-0 " style={{marginTop:'-200px'}}>
           <Image  variant='top'  src={offer} alt="Offer" fluid className="offer-image" 
           onMouseOver ={() => setHoveredCard('offer')} 
@@ -178,7 +178,7 @@ const config = {
     </Container>
     
     <Container className='figure' style={{  display: 'flex', flexDirection: 'column',padding:'10px 0px', justifyContent: 'center', alignItems: 'center' }}>
-      <h1 style={{textAlign:"center", marginBottom:'30px'}} className="text-center mb-3">Our Categories Of Products</h1>
+      <h1 style={{textAlign:"center", padding:'30px 0'}} className="text-center mb-3">Our Categories Of Products</h1>
     <Row>
       <Col>
         <Figure>
