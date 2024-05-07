@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Card, Carousel, Col, Container, Row, Button, Image, Figure, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import ban from '../../Images/homebanner.webp';
-import ban4 from '../../Images/hb4.webp';
+// import ban4 from '../../Images/hb4.webp';
+import ban4 from '../../Images/womens.webp';
 import ban7 from '../../Images/smartwatch.jpg';
+import ban8 from '../../Images/ban7.jpg';
 import offer from '../../Images/smiling-girl.png';
 import men from '../../Images/offer5-removebg-preview.png';
 import women from '../../Images/women.webp';
@@ -105,6 +107,13 @@ const config = {
         <img src={ban7} alt="Third slide" style={{ width: '100%', height: '700px', objectFit: 'cover' }} />
         <Carousel.Caption>
           <h3>Smart Watches</h3>
+          <p></p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item as={Link} to="/mobileproducts"  interval={2000}>
+        <img src={ban8} alt="Third slide" style={{ width: '100%', height: '700px', objectFit: 'cover' }} />
+        <Carousel.Caption>
+          <h3>Mobile</h3>
           <p></p>
         </Carousel.Caption>
       </Carousel.Item>

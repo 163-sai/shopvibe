@@ -91,6 +91,18 @@ const ProductManagement = () => {
     fetchProducts();
   }, [refreshPage]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/kidfashion');
+        setkidProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, [refreshPage]);
+
   const deleteProductmobile = async (productId) => {
     try {
       await axios.delete(`http://localhost:5001/api/mobile-products/${productId}`);
@@ -150,6 +162,19 @@ const ProductManagement = () => {
     try {
       await axios.delete(`http://localhost:5001/api/women-products/${productId}`);
       setwomenProducts(womenproducts.filter(product => product.id !== productId));
+      setSuccessMessage('Product deleted successfully');
+      setTimeout(() => {
+        setRefreshPage(true);
+      }, 1000); 
+      console.log('Product deleted successfully');
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+  const deleteProductkid = async (productId) => {
+    try {
+      await axios.delete(`http://localhost:5001/api/kid-products/${productId}`);
+      setkidProducts(kidproducts.filter(product => product.id !== productId));
       setSuccessMessage('Product deleted successfully');
       setTimeout(() => {
         setRefreshPage(true);
@@ -284,6 +309,30 @@ const ProductManagement = () => {
       formDataToSend.append('image', formData.image);
   
       await axios.post('http://localhost:5001/added-women-products', formDataToSend);
+      setSuccessMessage('Product created successfully');
+      setFormData({ name: '', description: '', price: '', image: null });
+      setTimeout(() => {
+        setRefreshPage(true);
+      }, 1000); 
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
+  };
+  const handleSubmitkid = async (e) => {
+    e.preventDefault();
+    if (!formData.name) {
+      console.error('Product name cannot be empty');
+      return;
+    }
+  
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('price', formData.price);
+      formDataToSend.append('image', formData.image);
+  
+      await axios.post('http://localhost:5001/added-kid-products', formDataToSend);
       setSuccessMessage('Product created successfully');
       setFormData({ name: '', description: '', price: '', image: null });
       setTimeout(() => {
@@ -460,6 +509,35 @@ const ProductManagement = () => {
       <Button onClick={() => setShowAddWomenModal(true)} style={{width:'fit-content'}}>Add Women product</Button>
       </div>
       <hr style={{ margin: '20px 0' }} />
+      <Table striped bordered hover style={{padding:'10px 0px'}}>
+        <thead>
+          <h2>Kid</h2>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {kidproducts.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.description}</td>
+              <td>
+                <Button variant="danger" onClick={() => deleteProductkid(product.id)} style={{width:'fit-content'}}><IconTrash /></Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+      <Button onClick={() => setShowAddKidModal(true)} style={{width:'fit-content'}}>Add Kid product</Button>
+      </div>
+      <hr style={{ margin: '20px 0' }} />
       </Container>
       
       
@@ -585,6 +663,34 @@ const ProductManagement = () => {
   </Modal.Header>
   <Modal.Body>
       <Form onSubmit={handleSubmitwomen} style={{marginBottom:'50px'}}>
+        <Form.Group controlId="productName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
+        </Form.Group>
+        <Form.Group controlId="productDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control as="textarea" rows={3} name="description" value={formData.description} onChange={handleChange} />
+        </Form.Group>
+        <Form.Group controlId="productPrice">
+          <Form.Label>Price</Form.Label>
+          <Form.Control type="number" name="price" value={formData.price} onChange={handleChange} required />
+        </Form.Group>
+        <Form.Group controlId="productImage">
+          <Form.Label>Image</Form.Label>
+          <Form.Control type="file" name="image" onChange={handleChange} accept="image/*" />
+        </Form.Group>
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center',padding:'20px 0px'}}>
+        <Button type="submit" style={{width:'fit-content'}}>Add Product</Button>
+        </div>
+      </Form>
+      </Modal.Body>
+</Modal>
+      <Modal show={showAddKidModal} onHide={() => setShowAddKidModal(false)}>
+  <Modal.Header closeButton>
+    <Modal.Title>Add New Kid Product</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+      <Form onSubmit={handleSubmitkid} style={{marginBottom:'50px'}}>
         <Form.Group controlId="productName">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />

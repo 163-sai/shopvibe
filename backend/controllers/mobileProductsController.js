@@ -72,6 +72,20 @@ try {
 }
 }
 
+exports.deletekidProduct = async (req, res) => {
+  const productId = req.params.id;
+
+try {
+  const deleteQuery = 'DELETE FROM kidfashion WHERE id = ?';
+  await db.query(deleteQuery, [productId]);
+
+  res.status(200).json({ message: 'Product deleted successfully' });
+} catch (error) {
+  console.error('Error deleting product:', error);
+  res.status(500).json({ error: 'An error occurred while deleting the product' });
+}
+}
+
 
 
 exports.addmobileProduct = async (req, res) => {
