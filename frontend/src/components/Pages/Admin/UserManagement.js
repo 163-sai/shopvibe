@@ -75,8 +75,10 @@ const UserManagement = () => {
               <td>{user.email}</td>
               <td>{user.contactNumber}</td>
               <td>
-                <Button variant="danger" onClick={() => deleteUser(user.id)}><IconTrash /></Button>
+                <div style={{width:'fit-content', display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                <Button variant="danger" onClick={() => deleteUser(user.id)} ><IconTrash /></Button>
                 <Button variant="primary" onClick={() => handleEditModalOpen(user)}><IconEdit /></Button>
+                </div>
               </td>
             </tr>
           ))}

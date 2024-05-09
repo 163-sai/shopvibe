@@ -72,6 +72,19 @@ function FooterUpdated() {
                 </Col>
             </Row>
         </Row>
+<Row className='bg-black  p-2'>
+  <Nav className="me-auto d-flex justify-content-center" style={{ width: '100%', flexWrap: 'wrap', gap: '20px' }}>
+    <div style={{ display: 'flex',justifyContent:'center', flexDirection: 'row', flexGrow: '1' }} className='test'>
+      <NavLink to='/mobileproducts' className="nav-link" activeClassName="active" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Mobile</NavLink><span className='seperator' style={{ display: 'flex', alignItems: 'center', color:'white' }}>|</span>
+      <NavLink to='/laptopproducts' className="nav-link" activeClassName="active" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Laptop</NavLink><span className='seperator' style={{ display: 'flex', alignItems: 'center', color:'white' }}>|</span>
+      <NavLink to='/smartwatchproducts' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Smartwatch</NavLink><span className='seperator' style={{ display: 'flex', alignItems: 'center', color:'white' }}>|</span>
+      <NavLink to='/menfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Men</NavLink><span className='seperator' style={{ display: 'flex', alignItems: 'center', color:'white' }}>|</span>
+      <NavLink to='/womenfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Women</NavLink><span className='seperator' style={{ display: 'flex', alignItems: 'center', color:'white' }}>|</span>
+      <NavLink to='/kidfashion' className="nav-link" style={{ textDecoration: 'none', fontWeight: 'bold', color: 'white' }}>Kid</NavLink>
+    </div>
+  </Nav>
+</Row>
+
         <Row className='bg-white text-black p-2'>
           <Col className='text-center'>
             <p className='mb-0'>&copy; {new Date().getFullYear()} ShopVibe. All rights reserved.</p>
