@@ -50,7 +50,7 @@ function MenFashion() {
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', marginTop:'50px', marginBottom:'100px' }}>
+    <div style={{display: 'flex', flexDirection: 'column', padding:'50px 0px' }}>
       <Container>
         {showAddedMessage && <Alert variant="success">Added to Cart!</Alert>}
         <h1 style={{marginBottom:'50px'}}>Men Fashions</h1>
@@ -58,6 +58,7 @@ function MenFashion() {
         <Row xs={12} sm={6} md={4} lg={3} className='g-4'>
           {products.map(product => (
             <Col key={product.id}>
+              <div style={{padding:'10px 0px'}}>
               <Card className="mb-4" style={{ height: '100%',border:'none', borderBottom:'3px solid lightgrey', borderTop:'3px solid lightgrey'}}>
                 <Link to={`/menfashiondetails/${product.id}`}>
                   <Card.Img
@@ -132,6 +133,7 @@ function MenFashion() {
                 </Card.Footer>
                 </div>
               </Card>
+              </div>
             </Col>
           ))}
         </Row>

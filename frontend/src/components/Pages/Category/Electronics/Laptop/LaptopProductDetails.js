@@ -96,9 +96,6 @@ function LaptopProductDetails() {
           <Card style={{border:'none',borderBottom:'3px solid lightgrey'}}>
             <Card.Img variant="top" src={`data:image/png;base64,${product.image}`} />
           </Card>
-          <Card>
-            <Card.Img variant="bottom" src={`data:image/png;base64,${product.add_image}`} />
-          </Card>
           </div>
         </Col>
         <Col xs={12} md={6} style={{ marginBottom: '20px' }}>

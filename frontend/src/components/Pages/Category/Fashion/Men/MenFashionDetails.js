@@ -95,7 +95,7 @@ function MenFashionDetails() {
   };
 
   return (
-    <div className=''style={{display: 'flex', flexDirection: 'column', marginTop:'50px', marginBottom:'100px' }}>
+    <div className=''style={{display: 'flex', flexDirection: 'column', padding:'50px 0px'}}>
       <Container>
       {showAddedMessage && <Alert variant="success">Added to Cart!</Alert>}
         <Row>

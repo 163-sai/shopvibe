@@ -58,6 +58,7 @@ function KidFashion() {
         <Row xs={12} sm={6} md={4} lg={3} className='g-4'>
           {products.map(product => (
             <Col key={product.id}>
+              <div style={{padding:'10px 0px'}}>
               <Card className="mb-4" style={{ height: '100%',border:'none', borderBottom:'3px solid lightgrey', borderTop:'3px solid lightgrey'}}>
                 <Link to={`/kidfashiondetails/${product.id}`}>
                 <Card.Img
@@ -132,6 +133,7 @@ function KidFashion() {
                 </Card.Footer>
                 </div>
               </Card>
+              </div>
             </Col>
           ))}
         </Row>
