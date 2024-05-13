@@ -13,6 +13,8 @@ import kid from '../../Images/kid.jpg';
 import mobile from '../../Images/mobile.jpg';
 import laptop from '../../Images/laptop.jpg';
 import smartwatch from '../../Images/smartwatch.jpg';
+import home from '../../Images/home.gif';
+import gototop from '../../Images/deadpool-go-to-top-5.webp';
 import membership from '../../Images/subscription banner.webp';
 import axios from 'axios';
 import { addToCart } from '../Cart/cartFunctions';
@@ -85,8 +87,38 @@ const config = {
 
   const [hoveredCard, setHoveredCard] = useState(null);
 
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 1000) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
+    {showButton && (
+        <Button className="go-to-top" onClick={scrollToTop} style={{ position: 'fixed', bottom: '20px', right: '-200px', backgroundColor: 'transparent', border: 'none', zIndex: '999' }}>
+          <Image src={gototop} alt="Go to Top" fluid />
+        </Button>
+      )}
     <div className='home'>
     <Carousel >
       <Carousel.Item as={Link} to="/menfashion"  interval={3000}>
@@ -118,6 +150,8 @@ const config = {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+
+    
 
     <div style={{ display: 'flex', flexDirection: 'column',padding:'50px 0px 200px 0px' }} className='bg-light rounded'>
     <Container>
@@ -261,6 +295,7 @@ const config = {
         </Figure>
       </Col>
     </Row>
+    <Card.Img src={home} />
     </Container> 
 
     <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -269,6 +304,7 @@ const config = {
     </Link>
     </Container>
     <Container>
+
                 <ChatBot
                     headerTitle="ShopVibeBot"
                     steps={steps}
@@ -278,6 +314,7 @@ const config = {
           
     </Container>
     </div>
+
   </>
   );
 };
