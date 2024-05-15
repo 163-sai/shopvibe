@@ -126,7 +126,7 @@ function MenFashion() {
                       variant="primary"
                       onClick={() => handleAddToCart(product.name, product.price)}
                       disabled={!selectedSize} 
-                      style={{ width: 'fit-content' }}
+                      style={{width:'fit-content', fontSize:'20px', backgroundColor:'#009FFD', border:'none', borderBottom:'3px solid black'}}
                     >
                   <IconShoppingCart stroke={3} />Add to Cart</Button>
                   </div>

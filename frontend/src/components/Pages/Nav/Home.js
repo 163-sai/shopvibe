@@ -178,7 +178,7 @@ const config = {
                 <Card.Text>Price: ₹{product.price}</Card.Text>  
                 <OverallStarRating color={color}  />
               </Card.Body>
-              <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '30px',marginTop:'30px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-around', padding:'20px 0' }}>
               <Card.Footer>
               <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} 
                style={{width:'fit-content', fontSize:'20px', backgroundColor:'#009FFD', border:'none', borderBottom:'3px solid black'}}

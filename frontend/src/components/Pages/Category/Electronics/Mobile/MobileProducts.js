@@ -74,7 +74,8 @@ function MobileProducts() {
                 <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                 <Card.Footer>
                   <Link to='/cartpage'>
-                    <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} style={{width:'fit-content'}}>
+                    <Button variant="primary" onClick={() => handleAddToCart(product.name, product.price)} 
+                    style={{width:'fit-content', fontSize:'20px', backgroundColor:'#009FFD', border:'none', borderBottom:'3px solid black'}}>
                     <IconShoppingCart stroke={3} />Add to Cart</Button>
                   </Link>
                 </Card.Footer>
