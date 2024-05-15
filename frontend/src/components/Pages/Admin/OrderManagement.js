@@ -57,10 +57,10 @@ const OrderManagement = () => {
               <td>{order.products}</td>
               <td>{order.total}</td>
               <td>{order.email}</td>
-              <td>{order.status}</td>
               <td>
                 <Button variant="info" onClick={() => updateOrderStatus(order.id, 'Shipped')} style={{width:'fit-content'}}>Mark as Shipped</Button>
               </td>
+              <td>{order.ord_status}</td>
             </tr>
           ))}
         </tbody>
